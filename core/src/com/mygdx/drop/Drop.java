@@ -125,14 +125,15 @@ public class Drop implements ApplicationListener {
 		// begin a new batch and draw the bucket and
 		// all drops
 		batch.begin();
-		batch.draw(bucketImage, bucket.x, bucket.y);
-		for(Rectangle raindrop: raindrops) {
-			batch.draw(dropImage, raindrop.x, raindrop.y);
+		if(nLives>0){
+			batch.draw(bucketImage, bucket.x, bucket.y);
+			for(Rectangle raindrop: raindrops) {
+				batch.draw(dropImage, raindrop.x, raindrop.y);
+			}
 		}
         font.draw(batch,Integer.toString(nScore) , 10, 10);
         font.draw(batch, Integer.toString(nLives), 200, 10);
         font.draw(batch, Integer.toString(spawnMillis), 400, 10);
-
 		batch.end();
 
 		// process user input
